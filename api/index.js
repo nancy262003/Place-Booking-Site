@@ -21,14 +21,11 @@ app.use(cookieParser());
 app.use('/uploads',express.static(__dirname+'/uploads'));
 
 
-app.use(cors({
-     credentials:true,
-
-    // origin:'http://127.0.0.1:5173',
-    origin:['https://bookyourplacenow.onrender.com','http://127.0.0.1:5173']
-    //origin: 'http://127.0.0.1:5173': This specifies the allowed origin for cross-origin requests. In this case, the server allows requests from http://127.0.0.1:5173 only. The origin is the domain, protocol, and port from which the request is originating.
-
-}));
+app.use((req, res, next) => {
+  res.header('Access-Control-Allow-Origin', 'https://bookyourplace.netlify.app');
+  res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
+  next();
+});
 
 
 
