@@ -3,7 +3,7 @@ const app=express();
 const cors=require('cors');
 require('dotenv').config()
 const { default: mongoose } = require('mongoose');
-const User = require('./models/user');
+const User = require('./models/User');
 const Place=require('./models/Place')
 const bcrypt=require('bcryptjs');
 const jwt=require('jsonwebtoken');
@@ -24,7 +24,8 @@ app.use('/uploads',express.static(__dirname+'/uploads'));
 app.use(cors({
      credentials:true,
 
-    origin:'http://127.0.0.1:5173',
+    // origin:'http://127.0.0.1:5173',
+    origin:['https://bookyourplacenow.onrender.com','http://127.0.0.1:5173']
     //origin: 'http://127.0.0.1:5173': This specifies the allowed origin for cross-origin requests. In this case, the server allows requests from http://127.0.0.1:5173 only. The origin is the domain, protocol, and port from which the request is originating.
 
 }));
